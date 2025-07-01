@@ -12,3 +12,5 @@ This month I would be focusing moderately on practice and furnishing my problem 
 - Graphs
 - Bit  
 - Backtracking
+
+I would also language-cross and practice my C++ skills by solving questions in this beautiful language.
