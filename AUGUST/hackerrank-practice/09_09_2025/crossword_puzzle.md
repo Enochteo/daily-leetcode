@@ -30,3 +30,31 @@ If a placement is valid, recursively attempt to place the next word.
 If all words are placed, return the solution.
 
 If not, undo the placement (backtrack) and try another option.
+
+**Plan**
+
+Preprocess input:
+
+Split the words string by ;.
+
+Convert the crossword grid into a mutable 2D list.
+
+Helper functions:
+
+can_place_h(r, c, word): Check if a word fits horizontally at (r, c).
+
+can_place_v(r, c, word): Check if a word fits vertically at (r, c).
+
+place_horizontal(r, c, word) / place_vertical(r, c, word): Place word, record changed positions.
+
+unplace(placed): Undo a placement by restoring '-' in changed cells.
+
+Backtracking recursion:
+
+Base case: if all words are placed, return True.
+
+Recursive step: try each word in each valid position.
+
+If a placement leads to a solution, return True. Otherwise backtrack.
+
+Return solution: Join the grid back into a list of strings.
