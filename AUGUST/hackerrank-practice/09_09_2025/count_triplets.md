@@ -64,3 +64,23 @@ Add left_map[num // r] * right_map[num * r] to result.
 Increment left_map[num] since num now becomes part of the left side.
 
 Return the total count.
+
+**Implement**
+```py
+from collections import defaultdict, Counter
+
+def countTriplets(arr, r):
+    counts = 0
+    left_map = defaultdict(int)
+    right_map = Counter(arr)  # counts of all elements to the right initially
+    
+    for num in arr:
+        right_map[num] -= 1  # move current num from right to middle
+        
+        if num % r == 0:  # num can only be a middle if divisible by r
+            counts += left_map[num // r] * right_map[num * r]
+        
+        left_map[num] += 1  # move current num to the left
+    
+    return counts
+```
