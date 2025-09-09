@@ -38,3 +38,25 @@ Base cases:
 If left > right: return `[None]` (empty tree).
 
 If left == right: return `[TreeNode(left)]`.
+
+**Plan**
+
+Define helper generate(left, right) → returns a list of all BST roots using numbers in [left..right].
+
+If left > right: return [None].
+
+If left == right: return [TreeNode(left)].
+
+Otherwise:
+
+Loop val from left to right.
+
+Generate all left subtrees from generate(left, val-1).
+
+Generate all right subtrees from generate(val+1, right).
+
+For every pair (L, R), create a root node TreeNode(val, L, R) and add it to results.
+
+Return the list of constructed trees.
+
+Entry point: call generate(1, n).
