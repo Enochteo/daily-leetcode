@@ -11,52 +11,56 @@ arr[k] = arr[j] * r
 
 **Understand**
 
-We are asked to generate all structurally unique BSTs (binary search trees) that store values 1..n.
+We are asked to count the number of triplets (i, j, k) in an array arr such that:
 
-Each BST must follow the BST property:
+`i < j < k`
 
-Left subtree values < root < Right subtree values.
+`arr[j] = arr[i] * r`
 
-Different structures count as different BSTs, even if they contain the same values.
+`arr[k] = arr[j] * r`
 
-We must return all possible root nodes representing distinct BSTs.
+Where r is the given common ratio.
+
+The array can be large (n ≤ 10^7 in constraints), so brute force checking all triplets is infeasible.
 
 **Match**
 
-This is a recursive tree construction problem:
+This is a geometric progression detection problem:
 
-Pick each number val in `[left..right]` as the root.
+Each element can potentially be:
 
-Recursively generate all possible left subtrees from `[left..val-1]`.
+the first element of a triplet,
 
-Recursively generate all possible right subtrees from `[val+1..right]`.
+the middle element of a triplet,
 
-Combine every left and right subtree with the chosen root.
+or the last element of a triplet.
 
-Base cases:
+Key observation:
+When we process num as the middle element, the number of valid triplets is:
 
-If left > right: return `[None]` (empty tree).
+count += (# of left elements equal to num/r) * (# of right elements equal to num*r)
 
-If left == right: return `[TreeNode(left)]`.
+
+We need efficient frequency lookups on both sides.
 
 **Plan**
 
-Define helper generate(left, right) → returns a list of all BST roots using numbers in [left..right].
+Use two hash maps (dictionaries):
 
-If left > right: return [None].
+left_map: counts of numbers we’ve already passed (potential left side).
 
-If left == right: return [TreeNode(left)].
+right_map: counts of numbers still ahead (potential right side).
 
-Otherwise:
+Initialize right_map as a frequency count of all numbers in arr.
 
-Loop val from left to right.
+For each number num in arr:
 
-Generate all left subtrees from generate(left, val-1).
+Decrement right_map[num] since we’re processing it now.
 
-Generate all right subtrees from generate(val+1, right).
+If num % r == 0:
 
-For every pair (L, R), create a root node TreeNode(val, L, R) and add it to results.
+Add left_map[num // r] * right_map[num * r] to result.
 
-Return the list of constructed trees.
+Increment left_map[num] since num now becomes part of the left side.
 
-Entry point: call generate(1, n).
+Return the total count.
