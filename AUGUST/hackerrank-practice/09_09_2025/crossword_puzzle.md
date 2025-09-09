@@ -16,3 +16,17 @@ Each word must be placed horizontally or vertically.
 The filled crossword must be valid — all words must fit exactly, align properly, and not conflict with other words.
 
 This is a constraint satisfaction problem, well-suited to backtracking recursion.
+
+**Match**
+
+This problem matches the backtracking / DFS search pattern:
+
+Pick a word to place.
+
+Try to place it in every valid horizontal or vertical position.
+
+If a placement is valid, recursively attempt to place the next word.
+
+If all words are placed, return the solution.
+
+If not, undo the placement (backtrack) and try another option.
