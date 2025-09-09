@@ -102,3 +102,21 @@ O(n), since we make one pass through the array and use hash lookups.
 Space Complexity:
 
 O(n) for the hash maps in the worst case (all numbers unique).
+
+**Pattern to Remember**
+
+For problems involving triplets in geometric progression:
+
+Use hash maps to track frequency of left and right candidates.
+
+Treat each element as the potential middle of a triplet.
+
+Count combinations dynamically without explicitly building all triplets.
+
+This “left–middle–right” frequency product pattern is useful in:
+
+Count Triplets (HackerRank)
+
+Subsequence problems with ratios or differences
+
+Triplet problems reducible to pair counting on both sides
