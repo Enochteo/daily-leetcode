@@ -84,3 +84,11 @@ def countTriplets(arr, r):
     
     return counts
 ```
+
+**Review**
+
+Each element is treated as the middle of a potential triplet.
+
+Efficient dictionary lookups allow O(1) checking of left/right candidates.
+
+Avoids O(n³) or O(n²) brute force — runs in O(n).
