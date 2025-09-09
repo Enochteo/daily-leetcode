@@ -58,3 +58,69 @@ Recursive step: try each word in each valid position.
 If a placement leads to a solution, return True. Otherwise backtrack.
 
 Return solution: Join the grid back into a list of strings.
+
+**Implement**
+```py
+from collections import defaultdict, Counter
+
+def crosswordPuzzle(crossword, words):
+    words = words.split(';')   
+    crossword = [list(row) for row in crossword]
+
+    def can_place_h(r, c, word):
+        if c + len(word) > 10: return False
+        if c > 0 and crossword[r][c-1] != '+': return False
+        if c + len(word) < 10 and crossword[r][c+len(word)] != '+': return False
+        for i in range(len(word)):
+            if crossword[r][c+i] not in ('-', word[i]):
+                return False
+        return True
+        
+    def can_place_v(r, c, word):
+        if r + len(word) > 10: return False
+        if r > 0 and crossword[r-1][c] != '+': return False
+        if r + len(word) < 10 and crossword[r+len(word)][c] != '+': return False
+        for i in range(len(word)):
+            if crossword[r+i][c] not in ('-', word[i]):
+                return False
+        return True
+
+    def place_horizontal(r, c, word):
+        placed = [] 
+        for i in range(len(word)):
+            if crossword[r][c+i] == '-':
+                crossword[r][c+i] = word[i]
+                placed.append((r, c+i))
+        return placed
+
+    def place_vertical(r, c, word):
+        placed = [] 
+        for i in range(len(word)):
+            if crossword[r+i][c] == '-':
+                crossword[r+i][c] = word[i]
+                placed.append((r+i, c))
+        return placed
+
+    def unplace(placed):
+        for i, j in placed:
+            crossword[i][j] = '-'
+
+    def solve(index):     
+        if index == len(words):
+            return True
+        word = words[index]
+        for r in range(10):
+            for c in range(10):
+                if can_place_h(r, c, word):
+                    placed = place_horizontal(r, c, word)
+                    if solve(index+1): return True
+                    unplace(placed)
+                if can_place_v(r, c, word):
+                    placed = place_vertical(r, c, word)
+                    if solve(index+1): return True
+                    unplace(placed)
+        return False
+
+    solve(0)
+    return [''.join(row) for row in crossword]
+```
