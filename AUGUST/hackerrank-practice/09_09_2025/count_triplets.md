@@ -92,3 +92,13 @@ Each element is treated as the middle of a potential triplet.
 Efficient dictionary lookups allow O(1) checking of left/right candidates.
 
 Avoids O(n³) or O(n²) brute force — runs in O(n).
+
+**Evaluate**
+
+Time Complexity:
+
+O(n), since we make one pass through the array and use hash lookups.
+
+Space Complexity:
+
+O(n) for the hash maps in the worst case (all numbers unique).
