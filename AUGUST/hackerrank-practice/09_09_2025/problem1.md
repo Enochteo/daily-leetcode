@@ -28,3 +28,15 @@ Next m lines: two integers u v, denoting a road between city u and city v.
 **Output Format**
 
 For each query, print a single integer: the minimum cost.
+
+**Constraints**
+
+1 ≤ q ≤ 10
+
+1 ≤ n ≤ 10^5
+
+0 ≤ m ≤ 10^5
+
+1 ≤ c_lib, c_road ≤ 10^5
+
+1 ≤ u, v ≤ n
