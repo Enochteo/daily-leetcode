@@ -40,3 +40,41 @@ For each query, print a single integer: the minimum cost.
 1 ≤ c_lib, c_road ≤ 10^5
 
 1 ≤ u, v ≤ n
+
+
+**Approaches**
+1. Graph Traversal (DFS/BFS)
+
+Build adjacency list for the cities.
+
+Traverse unvisited nodes, count component size.
+
+Apply formula for each component.
+
+2. Union-Find (Disjoint Set Union - DSU)
+
+Initialize n disjoint sets.
+
+For each road (u, v), perform union(u, v).
+
+After all unions, count size of each disjoint set.
+
+Apply formula for each set.
+
+**Pseudocode (DFS)**
+```py
+def roadsAndLibraries(n, c_lib, c_road, roads):
+    if c_lib <= c_road:
+        return n * c_lib
+    
+    graph = build adjacency list from roads
+    visited = [False] * (n+1)
+    total_cost = 0
+    
+    for city in range(1, n+1):
+        if not visited[city]:
+            size = dfs_count(city)
+            total_cost += c_lib + (size - 1) * c_road
+    
+    return total_cost
+```
