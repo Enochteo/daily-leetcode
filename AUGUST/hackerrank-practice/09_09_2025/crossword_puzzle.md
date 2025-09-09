@@ -124,3 +124,13 @@ def crosswordPuzzle(crossword, words):
     solve(0)
     return [''.join(row) for row in crossword]
 ```
+
+**Review**
+
+Each word is placed recursively, ensuring all valid combinations are explored.
+
+placed tracking ensures we only undo the cells that were actually changed.
+
+Both horizontal and vertical placement is attempted for every word.
+
+Returns the completed crossword as a list of strings.
