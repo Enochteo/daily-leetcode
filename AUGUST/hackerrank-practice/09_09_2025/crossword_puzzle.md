@@ -134,3 +134,9 @@ placed tracking ensures we only undo the cells that were actually changed.
 Both horizontal and vertical placement is attempted for every word.
 
 Returns the completed crossword as a list of strings.
+
+**Evaluate**
+
+Time Complexity: Exponential in the worst case (backtracking), but efficient pruning (fit checks) reduces practical runtime.
+
+Space Complexity: O(n²) for the grid + recursion depth of O(#words).
