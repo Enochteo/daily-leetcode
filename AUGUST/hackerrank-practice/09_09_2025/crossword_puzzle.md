@@ -140,3 +140,19 @@ Returns the completed crossword as a list of strings.
 Time Complexity: Exponential in the worst case (backtracking), but efficient pruning (fit checks) reduces practical runtime.
 
 Space Complexity: O(n²) for the grid + recursion depth of O(#words).
+
+**Pattern to Remember**
+
+For puzzle-fill problems like crossword or Sudoku:
+
+Use backtracking recursion.
+
+Always define:
+
+A validity check (can place).
+
+An apply step (place).
+
+An undo step (unplace).
+
+Recurse word by word until a solution is found.
