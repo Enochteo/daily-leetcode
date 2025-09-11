@@ -22,3 +22,19 @@ Higher score → comes earlier.
 If scores equal → compare names alphabetically.
 
 Python’s sorted() doesn’t take a comparator directly, but we can use functools.cmp_to_key to convert a comparator function into a key function.
+
+**Plan**
+
+Define a Player class with attributes name and score.
+
+Implement a comparator(a, b) method:
+
+If a.score > b.score: return -1 (a comes before b).
+
+If a.score < b.score: return 1 (b comes before a).
+
+Otherwise, compare a.name and b.name.
+
+Use sorted(data, key=cmp_to_key(Player.comparator)) to sort the players.
+
+Print the results.
