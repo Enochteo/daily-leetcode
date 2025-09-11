@@ -119,4 +119,4 @@ Count Triplets (HackerRank)
 
 Subsequence problems with ratios or differences
 
-Triplet problems reducible to pair counting on both sides
+Triplet problems reducible to pair counting on both sides gyffuh
