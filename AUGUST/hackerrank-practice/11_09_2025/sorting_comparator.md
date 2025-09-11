@@ -85,3 +85,19 @@ Time Complexity: Sorting → O(n log n)
 Space Complexity: O(n) for storing players.
 
 Efficient for HackerRank constraints.
+
+**Pattern to Remember**
+
+For custom sorting problems in Python:
+
+Use cmp_to_key with a comparator when conditions are complex.
+
+Comparator should return:
+
+-1 if first argument < second (should come earlier),
+
+1 if first argument > second (should come later).
+
+Apply lexicographic tie-breakers when values are equal.
+
+This approach generalizes to multi-criteria sorting tasks.
