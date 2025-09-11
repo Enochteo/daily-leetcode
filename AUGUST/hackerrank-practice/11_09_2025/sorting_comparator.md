@@ -69,3 +69,11 @@ data = sorted(data, key=cmp_to_key(Player.comparator))
 for i in data:
     print(i.name, i.score)
 ```
+
+**Review**
+
+Custom comparator enforces descending score, then ascending name order.
+
+cmp_to_key adapts the comparator for Python’s sort.
+
+Prints sorted players in the correct order.
