@@ -77,3 +77,11 @@ Custom comparator enforces descending score, then ascending name order.
 cmp_to_key adapts the comparator for Python’s sort.
 
 Prints sorted players in the correct order.
+
+**Evaluate**
+
+Time Complexity: Sorting → O(n log n)
+
+Space Complexity: O(n) for storing players.
+
+Efficient for HackerRank constraints.
