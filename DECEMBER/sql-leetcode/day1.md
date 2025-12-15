@@ -39,7 +39,7 @@ Use LEFT JOIN from Person → Address.
 
 Join on personId, select needed fields.
 
-**_Implement_**
+**Implement**
 
 ```sql
 SELECT p.firstName, p.lastName, a.city, a.state
